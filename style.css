@@ -1,0 +1,180 @@
+/* Custom Fonts */
+        .font-handwriting {
+            font-family: 'Amatic SC', cursive;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #08030C;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Initial Dark Wireframe Mode Styles */
+        body.wireframe-mode {
+            background-color: #000;
+        }
+
+        body.wireframe-mode .wireframe-border {
+            border: 1.5px dashed rgba(226, 182, 255, 0.95) !important;
+            box-shadow: 0 0 20px rgba(186, 104, 255, 0.15); 
+        }
+
+        body.wireframe-mode .wireframe-text-ghost {
+            color: rgba(226, 182, 255, 0.95);
+            text-shadow: 0 0 12px rgba(186, 104, 255, 0.4);
+        }
+
+        /* Continuous Dual Marquee Rows (9:16 Vertical Cards) */
+        .marquee-container {
+            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        }
+
+        .marquee-track-left {
+            animation: scrollLeft 35s linear infinite;
+        }
+
+        .marquee-track-right {
+            animation: scrollRight 35s linear infinite;
+        }
+
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.3333%); }
+        }
+
+        @keyframes scrollRight {
+            0% { transform: translateX(-33.3333%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Radial Flash Overlay on Light Turn On */
+        .light-flash-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 0vw;
+            height: 0vw;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(226, 182, 255, 0.8) 40%, transparent 80%);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1), height 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
+        }
+
+        .light-flash-overlay.active {
+            width: 300vw;
+            height: 300vw;
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+        MY STORY SECTION (MINIMALIST SCROLL REVEAL)
+        ========================================================================== */
+
+        .story-section {
+        position: relative;
+        z-index: 30;
+        width: 100%;
+        max-width: 768px; /* 3xl container */
+        margin: 0 auto;
+        padding: 112px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 128px; /* Spaced out so each chapter reveals individually on scroll */
+        }
+
+        /* Individual Story Block & Scroll Reveal State */
+        .story-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Class added by IntersectionObserver on scroll */
+        .story-block.visible {
+        opacity: 1;
+        transform: translateY(0);
+        }
+
+        /* Center-aligned Title Block */
+        .story-block:first-child {
+        align-items: center;
+        text-align: center;
+        }
+
+        /* Tags & Labels */
+        .story-tag,
+        .chapter-tag {
+        font-family: monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(192, 132, 252, 0.7); /* Purple accent */
+        }
+
+        /* Headlines (Amatic SC / Hand-drawn Style) */
+        .story-main-title {
+        font-family: 'Amatic SC', cursive;
+        font-size: 4rem; /* 6xl */
+        color: #f3e8ff;
+        letter-spacing: 0.05em;
+        line-height: 1;
+        }
+
+        @media (min-width: 768px) {
+        .story-main-title {
+        font-size: 6rem; /* 8xl */
+        }
+        }
+
+        .chapter-title {
+        font-family: 'Amatic SC', cursive;
+        font-size: 3rem; /* 5xl */
+        color: #f3e8ff;
+        letter-spacing: 0.025em;
+        line-height: 1.1;
+        }
+
+        @media (min-width: 768px) {
+        .chapter-title {
+        font-size: 3.75rem; /* 6xl */
+        }
+        }
+
+        /* Body Text */
+        .story-text {
+        font-size: 1rem;
+        line-height: 1.75;
+        color: rgba(233, 213, 255, 0.85);
+        }
+
+        @media (min-width: 768px) {
+        .story-text {
+        font-size: 1.125rem;
+        }
+        }
+
+        /* Quotes */
+        .story-quote {
+        font-family: 'Amatic SC', cursive;
+        font-size: 1.25rem;
+        font-style: italic;
+        color: #d8b4fe;
+        padding-top: 8px;
+        }
+
+        @media (min-width: 768px) {
+        .story-quote {
+        font-size: 1.5rem;
+        }
+        }
